@@ -9,72 +9,111 @@
 
 <body>
 
-    <nav>
-        <a href="index.html">TripSync</a>
-        <a href="dashboard.html">Dashboard</a>
-        <a href="trip.html">Sample trip</a>
-    </nav>
+    <header>
+        <nav aria-label="Main">
+            <a href="index.html">TripSync</a>
+            <a href="dashboard.html">Dashboard</a>
+            <a href="trip.html">Sample trip</a>
+        </nav>
+    </header>
 
-    <h1>Kyoto trip</h1>
-    <dl>
-        <dt>Destination</dt>
-        <dd>Kyoto, Japan</dd>
-        <dt>Dates</dt>
-        <dd>April 12 - 15</dd>
-        <dt>Travelers</dt>
-        <dd>3</dd>
-    </dl>
+    <main>
+        <figure>
+            <img src="https://picsum.photos/seed/kyoto-wide/800/300" width="800" height="300" alt="Kyoto, Japan">
+            <figcaption>Kyoto, Japan</figcaption>
+        </figure>
 
-    <nav>
-        <a href="#itinerary">Itinerary</a>
-        <a href="#budget">Budget</a>
-        <a href="#packing">Packing</a>
-        <a href="#chat">Chat</a>
-    </nav>
+        <h1>Kyoto trip</h1>
+        <dl>
+            <dt>Destination</dt>
+            <dd>Kyoto, Japan</dd>
+            <dt>Dates</dt>
+            <dd>April 12 - 15</dd>
+            <dt>Travelers</dt>
+            <dd>3</dd>
+        </dl>
 
-    <section id="itinerary">
-        <h2>Itinerary</h2>
-        <p>Day columns go here — tomorrow's job.</p>
-    </section>
+        <nav aria-label="Trip sections">
+            <a href="#itinerary">Itinerary</a>
+            <a href="#budget">Budget</a>
+            <a href="#packing">Packing</a>
+            <a href="#chat">Chat</a>
+        </nav>
 
-    <section id="budget">
-        <h2>Budget</h2>
-        <table>
-            <thead>
-                <tr>
-                    <th>Activity</th>
-                    <th>Cost</th>
-                    <th>Paid by</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>Fushimi Inari shrine</td>
-                    <td>Free</td>
-                    <td>—</td>
-                </tr>
-                <tr>
-                    <td>Nishiki market lunch</td>
-                    <td>$18</td>
-                    <td>Shubh</td>
-                </tr>
-                <tr>
-                    <td colspan="2"><strong>Total so far</strong></td>
-                    <td><strong>$18</strong></td>
-                </tr>
-            </tbody>
-        </table>
-    </section>
+        <section id="itinerary">
+            <h2>Itinerary</h2>
 
-    <section id="packing">
-        <h2>Packing list</h2>
-        <p>Checklist goes here — later.</p>
-    </section>
+            <article>
+                <h3>Day 1 · Apr 12</h3>
+                <ul>
+                    <li>9:00 am — Fushimi Inari shrine</li>
+                    <li>1:00 pm — Nishiki market</li>
+                </ul>
+            </article>
 
-    <section id="chat">
-        <h2>Chat</h2>
-        <p>Comments go here — later.</p>
-    </section>
+            <article>
+                <h3>Day 2 · Apr 13</h3>
+                <ul>
+                    <li>8:30 am — Arashiyama bamboo grove</li>
+                    <li>11:00 am — Kinkaku-ji temple</li>
+                    <li>4:00 pm — Gion district walk</li>
+                </ul>
+            </article>
+
+            <article>
+                <h3>Day 3 · Apr 14</h3>
+                <ul>
+                    <li>9:00 am — Kiyomizu-dera temple</li>
+                    <li>1:00 pm — Philosopher's path</li>
+                </ul>
+            </article>
+        </section>
+
+        <section id="budget">
+            <h2>Budget</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Activity</th>
+                        <th>Cost</th>
+                        <th>Paid by</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Fushimi Inari shrine</td>
+                        <td>Free</td>
+                        <td>—</td>
+                    </tr>
+                    <tr>
+                        <td>Nishiki market lunch</td>
+                        <td>$18</td>
+                        <td>Shubh</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2"><strong>Total so far</strong></td>
+                        <td><strong>$18</strong></td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section id="packing">
+            <h2>Packing list</h2>
+            <ul>
+                <li>Passport</li>
+                <li>Phone charger</li>
+                <li>Comfortable walking shoes</li>
+            </ul>
+        </section>
+
+        <section id="chat">
+            <h2>Chat</h2>
+            <p><strong>Priya:</strong> Should we add a day trip to Nara?</p>
+            <p><strong>Shubh:</strong> Yes, let's fit it into Day 2.</p>
+            <p>Real, live chat arrives once JavaScript and Socket.io exist.</p>
+        </section>
+    </main>
 
     <footer>
         <hr>
