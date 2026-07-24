@@ -7,5 +7,41 @@
 body {
     font-family: Arial, Helvetica, sans-serif;
     line-height: 1.6;
-    color: #222;
+    color: #22272B;
+    background-color: #F7F9F9;
+}
+
+h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #1B6F6F;
+}
+
+h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #1B6F6F;
+}
+
+h3 {
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+p {
+    font-size: 1rem;
+}
+
+a {
+    color: #1B6F6F;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+button {
+    background-color: #E76F51;
+    color: #FFFFFF;
+    font-weight: 600;
+    border: none;
+    padding: 0.5rem 1rem;
 }
