@@ -15,12 +15,15 @@ header {
     position: sticky;
     top: 0;
     z-index: 10;
+    background-color: #FFFFFF;
+    border-bottom: 1px solid #D8DED9;
+    padding: 1rem;
 }
 
 main {
     max-width: 960px;
     margin: 0 auto;
-    padding: 0 1em;
+    padding: 0 1rem;
 }
 
 img {
@@ -57,6 +60,12 @@ a {
     color: #1B6F6F;
     font-weight: 600;
     text-decoration: none;
+}
+
+hr {
+    border: none;
+    border-top: 1px solid #D8DED9;
+    margin-bottom: 1rem;
 }
 
 button {
