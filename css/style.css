@@ -1,3 +1,17 @@
+:root {
+    --color-primary: #1B6F6F;
+    --color-primary-tint: #E8F2F1;
+    --color-accent: #E76F51;
+    --color-accent-dark: #D65C3C;
+    --color-text: #22272B;
+    -color-text-muted: #5B6770;
+    --color-bg: #F7F9F9;
+    --color-border: #D8DED9;
+    --color-surface: #FFFFFF;
+    --shadow-card: 0 4px 12px rgba(0, 0, 0, 0.08);
+    --shadow-card-hover: 0 6px 16px rgba(0, 0, 0, 0.12);
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -7,16 +21,16 @@
 body {
     font-family: Arial, Helvetica, sans-serif;
     line-height: 1.6;
-    color: #22272B;
-    background-color: #F7F9F9;
+    color: var(--color-text);
+    background-color: var(--color-bg);
 }
 
 header {
     position: sticky;
     top: 0;
     z-index: 10;
-    background-color: #FFFFFF;
-    border-bottom: 1px solid #D8DED9;
+    background: linear-gradient(to bottom, var(--color-surface), var(--color-primary-tint));
+    border-bottom: 1px solid var(--color-border);
     padding: 1rem;
 }
 
@@ -34,15 +48,34 @@ img {
 h1 {
     font-size: 2.5rem;
     font-weight: 700;
-    color: #1B6F6F;
+    color: var(--color-primary);
+    margin-bottom: 1rem;
+}
+
+h1+p {
+    color: var(--color-text-muted);
+    font-size: 1.125rem;
     margin-bottom: 1rem;
 }
 
 h2 {
     font-size: 2rem;
     font-weight: 700;
-    color: #1B6F6F;
+    color: var(--color-primary);
     margin-bottom: 1rem;
+    position: relative;
+    padding-left: 1rem;
+}
+
+h2::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.25rem;
+    bottom: 0.25rem;
+    width: 4px;
+    background-color: var(--color-accent);
+    border-radius: 2px;
 }
 
 h3 {
@@ -57,23 +90,37 @@ p {
 }
 
 a {
-    color: #1B6F6F;
+    color: var(--color-primary);
     font-weight: 600;
     text-decoration: none;
 }
 
-hr {
-    border: none;
-    border-top: 1px solid #D8DED9;
-    margin-bottom: 1rem;
+a:hover,
+a:focus {
+    text-decoration: underline;
 }
 
 button {
-    background-color: #E76F51;
+    background: linear-gradient(135deg, var(--color-accent), var(--color-accent-dark));
     color: #FFFFFF;
     font-weight: 600;
     border: none;
+    border-radius: 6px;
     padding: 0.5rem 1rem;
+    cursor: pointer;
+}
+
+button:hover {
+    background: linear-gradient(135deg, var(--color-accent-dark), var(--color-accent));
+}
+
+button:active {
+    background: var(--color-accent-dark);
+}
+
+button:focus {
+    outline: 3px solid var(--color-primary);
+    outline-offset: 2px;
 }
 
 ul,
@@ -89,19 +136,36 @@ article {
     margin-bottom: 1.5rem;
 }
 
-.trip-card {
-    background-color: #FFFFFF;
-    border: 1px solid #D8DED9;
+hr {
+    border: none;
+    border-top: 1px solid var(--color-border);
+    margin-bottom: 1rem;
+}
+
+.trip-card,
+.auth-form {
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
     border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    box-shadow: var(--shadow-card);
+}
+
+.trip-card {
     padding: 1rem;
 }
 
+.trip-card:hover {
+    box-shadow: var(--shadow-card-hover);
+    border-color: var(--color-primary);
+}
+
+.trip-card figcaption {
+    font-weight: 600;
+    color: var(--color-primary);
+    margin-top: 0.5rem;
+}
+
 .auth-form {
-    background-color: #FFFFFF;
-    border: 1px solid #D8DED9;
-    border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
     padding: 1.5rem;
     max-width: 400px;
     margin: 1.5rem auto;
@@ -117,6 +181,16 @@ input {
     width: 100%;
     padding: 0.5rem;
     margin-bottom: 1rem;
-    border: 1px solid #D8DED9;
+    border: 1px solid var(--color-border);
     border-radius: 6px;
+}
+
+input:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px rgba(27, 111, 111, 0.15);
+}
+
+tbody tr:nth-child(even) {
+    background-color: var(--color-primary-tint);
 }
