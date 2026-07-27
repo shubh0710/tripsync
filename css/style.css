@@ -40,6 +40,12 @@ main {
     padding: 0 1rem;
 }
 
+nav {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
 img {
     max-width: 100%;
     height: auto;
@@ -169,6 +175,34 @@ hr {
     padding: 1.5rem;
     max-width: 400px;
     margin: 1.5rem auto;
+}
+
+.trip-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.trip-list .trip-card {
+    flex: 1 1 280px;
+    margin-bottom: 0;
+}
+
+.activity-list li {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.activity-time {
+    flex: 0 0 80px;
+    font-weight: 600;
+    color: var(--color-primary);
+}
+
+.activity-desc {
+    flex: 1;
 }
 
 label {
