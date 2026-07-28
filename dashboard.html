@@ -4,6 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
     <title>TripSync - Dashboard</title>
 </head>
@@ -11,6 +14,12 @@
 <body>
 
     <header>
+        <input type="checkbox" id="menu-toggle" class="menu-toggle">
+        <label for="menu-toggle" class="hamburger" aria-label="Toggle menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </label>
         <nav>
             <a href="index.html">TripSync</a>
             <a href="dashboard.html">Dashboard</a>
@@ -26,7 +35,7 @@
                 <article class="trip-card">
                     <a href="trip.html">
                         <figure>
-                            <img src="https://picsum.photos/seed/kyoto/400/250" width="400" height="250"
+                            <img src="https://picsum.photos/seed/kyoto/800/500" width="800" height="500"
                                 alt="Torii gates at Fushimi Inari, Kyoto">
                             <figcaption>Kyoto trip</figcaption>
                         </figure>
@@ -37,7 +46,7 @@
                 <article class="trip-card">
                     <a href="trip.html">
                         <figure>
-                            <img src="https://picsum.photos/seed/lisbon/400/250" width="400" height="250"
+                            <img src="https://picsum.photos/seed/lisbon/800/500" width="800" height="500"
                                 alt="Lisbon, Portugal coastline">
                             <figcaption>Lisbon weekend</figcaption>
                         </figure>

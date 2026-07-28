@@ -4,6 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
     <title>TripSync</title>
 </head>
@@ -11,6 +14,12 @@
 <body>
 
     <header>
+        <input type="checkbox" id="menu-toggle" class="menu-toggle">
+        <label for="menu-toggle" class="hamburger" aria-label="Toggle menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </label>
         <nav>
             <a href="index.html">TripSync</a>
             <a href="dashboard.html">Dashboard</a>
@@ -24,7 +33,7 @@
         <p>Plan trips together, in real time.</p>
 
         <h2>What you can do</h2>
-        <ul>
+        <ul class="dot-list">
             <li>Build a day-by-day itinerary together, live</li>
             <li>See real weather for every destination</li>
             <li>Split costs without the group-chat math</li>

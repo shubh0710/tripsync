@@ -4,6 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
     <title>TripSync - Kyoto trip</title>
 </head>
@@ -11,7 +14,13 @@
 <body>
 
     <header>
-        <nav aria-label="Main">
+        <input type="checkbox" id="menu-toggle" class="menu-toggle">
+        <label for="menu-toggle" class="hamburger" aria-label="Toggle menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </label>
+        <nav>
             <a href="index.html">TripSync</a>
             <a href="dashboard.html">Dashboard</a>
             <a href="trip.html">Sample trip</a>
@@ -20,7 +29,7 @@
 
     <main>
         <figure>
-            <img src="https://picsum.photos/seed/kyoto-wide/800/300" width="800" height="300" alt="Kyoto, Japan">
+            <img src="https://picsum.photos/seed/kyoto-wide/1200/450" width="1200" height="450" alt="Kyoto, Japan">
             <figcaption>Kyoto, Japan</figcaption>
         </figure>
 
@@ -34,7 +43,7 @@
             <dd>3</dd>
         </dl>
 
-        <nav aria-label="Trip sections">
+        <nav aria-label="Trip sections" class="section-nav">
             <a href="#itinerary">Itinerary</a>
             <a href="#budget">Budget</a>
             <a href="#packing">Packing</a>
@@ -115,14 +124,14 @@
 
         <section id="packing">
             <h2>Packing list</h2>
-            <ul>
+            <ul class="dot-list">
                 <li>Passport</li>
                 <li>Phone charger</li>
                 <li>Comfortable walking shoes</li>
             </ul>
         </section>
 
-        <section id="chat">
+        <section id="chat" class="chat-log">
             <h2>Chat</h2>
             <p><strong>Priya:</strong> Should we add a day trip to Nara?</p>
             <p><strong>Shubh:</strong> Yes, let's fit it into Day 2.</p>
