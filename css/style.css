@@ -148,7 +148,15 @@ hr {
     margin-bottom: 1rem;
 }
 
+.itinerary-board {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
 .trip-card,
+.day-column,
 .auth-form {
     background-color: var(--color-surface);
     border: 1px solid var(--color-border);
@@ -156,11 +164,13 @@ hr {
     box-shadow: var(--shadow-card);
 }
 
-.trip-card {
+.trip-card,
+.day-column {
     padding: 1rem;
 }
 
-.trip-card:hover {
+.trip-card:hover,
+.day-column:hover {
     box-shadow: var(--shadow-card-hover);
     border-color: var(--color-primary);
 }
@@ -177,6 +187,11 @@ hr {
     margin: 1.5rem auto;
 }
 
+.trip-list .trip-card,
+.itinerary-board .day-column {
+    margin-bottom: 0;
+}
+
 .trip-list {
     display: flex;
     flex-wrap: wrap;
@@ -186,7 +201,6 @@ hr {
 
 .trip-list .trip-card {
     flex: 1 1 280px;
-    margin-bottom: 0;
 }
 
 .activity-list li {
