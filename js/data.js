@@ -34,5 +34,22 @@ const lisbonTrip = {
     ]
 };
 
-console.log(kyotoTrip);
-console.log(lisbonTrip);
+function countActivities(day) {
+    let count = 0;
+    for (let i = 0; i < day.activities.length; i++) {
+        count = count + 1;
+    }
+    return count;
+}
+
+function findTodaysActivities(trip, label) {
+    for (let i = 0; i < trip.days.length; i++) {
+        if (trip.days[i].label === label) {
+            return trip.days[i].activities;
+        }
+    }
+    return "No activities found for that day.";
+}
+
+console.log(countActivities(kyotoTrip.days[1]));
+console.log(findTodaysActivities(lisbonTrip, "Day 2 · May 3")); // that day's activity list
