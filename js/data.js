@@ -4,32 +4,54 @@ const kyotoTrip = {
     travelers: 3,
     days: [
         {
+            id: 1,
             label: "Day 1 · Apr 12",
-            activities: ["9:00 am — Fushimi Inari shrine", "1:00 pm — Nishiki market"]
+            activities: [
+                { id: 1, time: "9:00 am", desc: "Fushimi Inari shrine" },
+                { id: 2, time: "1:00 pm", desc: "Nishiki market" }
+            ]
         },
         {
+            id: 2,
             label: "Day 2 · Apr 13",
-            activities: ["8:30 am — Arashiyama bamboo grove", "11:00 am — Kinkaku-ji temple", "4:00 pm — Gion district walk"]
+            activities: [
+                { id: 1, time: "8:30 am", desc: "Arashiyama bamboo grove" },
+                { id: 2, time: "11:00 am", desc: "Kinkaku-ji temple" },
+                { id: 3, time: "4:00 pm", desc: "Gion district walk" }
+            ]
         },
         {
+            id: 3,
             label: "Day 3 · Apr 14",
-            activities: ["9:00 am — Kiyomizu-dera temple", "1:00 pm — Philosopher's path"]
+            activities: [
+                { id: 1, time: "9:00 am", desc: "Kiyomizu-dera temple" },
+                { id: 2, time: "1:00 pm", desc: "Philosopher's path" }
+            ]
         }
     ]
 };
 
 const lisbonTrip = {
+    id: 2,
     destination: "Lisbon, Portugal",
     dates: "May 2 - 4",
     travelers: 1,
     days: [
         {
+            id: 1,
             label: "Day 1 · May 2",
-            activities: ["10:00 am — Belém Tower", "3:00 pm — Pastéis de Belém tasting"]
+            activities: [
+                { id: 1, time: "10:00 am", desc: "Belém Tower" },
+                { id: 2, time: "3:00 pm", desc: "Pastéis de Belém tasting" }
+            ]
         },
         {
+            id: 2,
             label: "Day 2 · May 3",
-            activities: ["9:00 am — Alfama district walk", "1:00 pm — Tram 28 ride"]
+            activities: [
+                { id: 1, time: "9:00 am", desc: "Alfama district walk" },
+                { id: 2, time: "1:00 pm", desc: "Tram 28 ride" }
+            ]
         }
     ]
 };
@@ -48,8 +70,14 @@ function addActivity(day, activity) {
     return day.activities;
 }
 
-function removeActivity(day, activity) {
-    const index = day.activities.indexOf(activity);
+function removeActivity(day, activityId) {
+    let index = -1;
+    for (let i = 0; i < day.activities.length; i++) {
+        if (day.activities[i].id === activityId) {
+            index = i;
+            break; // stop searching the moment we've found it
+        }
+    }
     if (index !== -1) {
         day.activities.splice(index, 1);
     }
@@ -57,7 +85,7 @@ function removeActivity(day, activity) {
 }
 
 console.log(getActivitiesForDay(kyotoTrip, "Day 2 · Apr 13"));
-addActivity(kyotoTrip.days[0], "Ramen dinner");
-console.log(kyotoTrip.days[0].activities);
-removeActivity(kyotoTrip.days[0], "Ramen dinner");
-console.log(kyotoTrip.days[0].activities);
+addActivity(kyotoTrip.days[0], { id: 3, time: "7:00 pm", desc: "Ramen dinner" });
+console.log([...kyotoTrip.days[0].activities]);
+removeActivity(kyotoTrip.days[0], 3);
+console.log([...kyotoTrip.days[0].activities]);
