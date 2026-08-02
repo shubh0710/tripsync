@@ -34,15 +34,7 @@ const lisbonTrip = {
     ]
 };
 
-function countActivities(day) {
-    let count = 0;
-    for (let i = 0; i < day.activities.length; i++) {
-        count = count + 1;
-    }
-    return count;
-}
-
-function findTodaysActivities(trip, label) {
+function getActivitiesForDay(trip, label) {
     for (let i = 0; i < trip.days.length; i++) {
         if (trip.days[i].label === label) {
             return trip.days[i].activities;
@@ -51,5 +43,21 @@ function findTodaysActivities(trip, label) {
     return "No activities found for that day.";
 }
 
-console.log(countActivities(kyotoTrip.days[1]));
-console.log(findTodaysActivities(lisbonTrip, "Day 2 · May 3")); // that day's activity list
+function addActivity(day, activity) {
+    day.activities.push(activity);
+    return day.activities;
+}
+
+function removeActivity(day, activity) {
+    const index = day.activities.indexOf(activity);
+    if (index !== -1) {
+        day.activities.splice(index, 1);
+    }
+    return day.activities;
+}
+
+console.log(getActivitiesForDay(kyotoTrip, "Day 2 · Apr 13"));
+addActivity(kyotoTrip.days[0], "Ramen dinner");
+console.log(kyotoTrip.days[0].activities);
+removeActivity(kyotoTrip.days[0], "Ramen dinner");
+console.log(kyotoTrip.days[0].activities);
