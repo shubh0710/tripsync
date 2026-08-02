@@ -1,4 +1,5 @@
 const kyotoTrip = {
+    id: 1,
     destination: "Kyoto, Japan",
     dates: "April 12 -15",
     travelers: 3,
@@ -56,6 +57,19 @@ const lisbonTrip = {
     ]
 };
 
+// Closure-based ID generator — keeps `nextId` private, nothing outside
+// this function can read or corrupt it directly.
+function createIdGenerator() {
+    let nextId = 100;
+    return function () {
+        const id = nextId;
+        nextId = nextId + 1;
+        return id;
+    };
+}
+
+const generateActivityId = createIdGenerator();
+
 function getActivitiesForDay(trip, label) {
     for (let i = 0; i < trip.days.length; i++) {
         if (trip.days[i].label === label) {
@@ -65,8 +79,13 @@ function getActivitiesForDay(trip, label) {
     return "No activities found for that day.";
 }
 
-function addActivity(day, activity) {
-    day.activities.push(activity);
+function addActivity(day, desc, time) {
+    const newActivity = {
+        id: generateActivityId(),
+        time: time,
+        desc: desc
+    };
+    day.activities.push(newActivity);
     return day.activities;
 }
 
@@ -75,7 +94,7 @@ function removeActivity(day, activityId) {
     for (let i = 0; i < day.activities.length; i++) {
         if (day.activities[i].id === activityId) {
             index = i;
-            break; // stop searching the moment we've found it
+            break;
         }
     }
     if (index !== -1) {
@@ -84,8 +103,13 @@ function removeActivity(day, activityId) {
     return day.activities;
 }
 
+// --- Sanity checks ---
+
 console.log(getActivitiesForDay(kyotoTrip, "Day 2 · Apr 13"));
-addActivity(kyotoTrip.days[0], { id: 3, time: "7:00 pm", desc: "Ramen dinner" });
+
+const updatedActivities = addActivity(kyotoTrip.days[0], "Ramen dinner", "7:00 pm");
 console.log([...kyotoTrip.days[0].activities]);
-removeActivity(kyotoTrip.days[0], 3);
+
+const newActivityId = updatedActivities[updatedActivities.length - 1].id;
+removeActivity(kyotoTrip.days[0], newActivityId);
 console.log([...kyotoTrip.days[0].activities]);
