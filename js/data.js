@@ -57,29 +57,30 @@ const lisbonTrip = {
     ]
 };
 
-// Closure-based ID generator — keeps `nextId` private, nothing outside
-// this function can read or corrupt it directly.
-function createIdGenerator() {
+// Closure-based ID generator — refactored to arrow-function form.
+// `nextId` stays just as private as before; only the syntax changed.
+const createIdGenerator = () => {
     let nextId = 100;
-    return function () {
+    return () => {
         const id = nextId;
         nextId = nextId + 1;
         return id;
     };
-}
+};
 
 const generateActivityId = createIdGenerator();
 
-function getActivitiesForDay(trip, label) {
+const getActivitiesForDay = (trip, label) => {
     for (let i = 0; i < trip.days.length; i++) {
         if (trip.days[i].label === label) {
             return trip.days[i].activities;
         }
     }
     return "No activities found for that day.";
-}
+};
 
-function addActivity(day, desc, time) {
+// `time` now has a default fallback, using today's default-parameter syntax.
+const addActivity = (day, desc, time = "TBD") => {
     const newActivity = {
         id: generateActivityId(),
         time: time,
@@ -87,9 +88,9 @@ function addActivity(day, desc, time) {
     };
     day.activities.push(newActivity);
     return day.activities;
-}
+};
 
-function removeActivity(day, activityId) {
+const removeActivity = (day, activityId) => {
     let index = -1;
     for (let i = 0; i < day.activities.length; i++) {
         if (day.activities[i].id === activityId) {
@@ -101,7 +102,7 @@ function removeActivity(day, activityId) {
         day.activities.splice(index, 1);
     }
     return day.activities;
-}
+};
 
 // --- Sanity checks ---
 
@@ -113,3 +114,8 @@ console.log([...kyotoTrip.days[0].activities]);
 const newActivityId = updatedActivities[updatedActivities.length - 1].id;
 removeActivity(kyotoTrip.days[0], newActivityId);
 console.log([...kyotoTrip.days[0].activities]);
+
+const addedWithDefaultTime = addActivity(kyotoTrip.days[1], "Spontaneous coffee stop");
+console.log(addedWithDefaultTime[addedWithDefaultTime.length - 1]); // time: "TBD"
+
+logActivities("Ramen dinner", "Temple visit", "Market walk");
