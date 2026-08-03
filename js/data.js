@@ -1,7 +1,7 @@
 const kyotoTrip = {
     id: 1,
     destination: "Kyoto, Japan",
-    dates: "April 12 -15",
+    dates: "April 12 - 15",
     travelers: 3,
     days: [
         {
@@ -57,8 +57,6 @@ const lisbonTrip = {
     ]
 };
 
-// Closure-based ID generator — refactored to arrow-function form.
-// `nextId` stays just as private as before; only the syntax changed.
 const createIdGenerator = () => {
     let nextId = 100;
     return () => {
@@ -70,16 +68,13 @@ const createIdGenerator = () => {
 
 const generateActivityId = createIdGenerator();
 
+// Refactored: manual for-loop-with-break → find
 const getActivitiesForDay = (trip, label) => {
-    for (let i = 0; i < trip.days.length; i++) {
-        if (trip.days[i].label === label) {
-            return trip.days[i].activities;
-        }
-    }
-    return "No activities found for that day.";
+    const day = trip.days.find((d) => d.label === label);
+    return day ? day.activities : "No activities found for that day.";
 };
 
-// `time` now has a default fallback, using today's default-parameter syntax.
+// Unchanged — no manual loop existed here to refactor
 const addActivity = (day, desc, time = "TBD") => {
     const newActivity = {
         id: generateActivityId(),
@@ -90,18 +85,20 @@ const addActivity = (day, desc, time = "TBD") => {
     return day.activities;
 };
 
+// Refactored: manual for-loop + splice → filter (non-mutating rebuild)
 const removeActivity = (day, activityId) => {
-    let index = -1;
-    for (let i = 0; i < day.activities.length; i++) {
-        if (day.activities[i].id === activityId) {
-            index = i;
-            break;
-        }
-    }
-    if (index !== -1) {
-        day.activities.splice(index, 1);
-    }
+    day.activities = day.activities.filter((activity) => activity.id !== activityId);
     return day.activities;
+};
+
+// New — reduce genuinely earns its keep here; .length alone can't total nested days
+const getTotalActivityCount = (trip) => {
+    return trip.days.reduce((total, day) => total + day.activities.length, 0);
+};
+
+// Refactored: manual for-loop → forEach
+const logActivities = (...activities) => {
+    activities.forEach((activity) => console.log(activity));
 };
 
 // --- Sanity checks ---
@@ -118,4 +115,16 @@ console.log([...kyotoTrip.days[0].activities]);
 const addedWithDefaultTime = addActivity(kyotoTrip.days[1], "Spontaneous coffee stop");
 console.log(addedWithDefaultTime[addedWithDefaultTime.length - 1]); // time: "TBD"
 
+console.log(getTotalActivityCount(kyotoTrip)); // total activities across all 3 days
+
 logActivities("Ramen dinner", "Temple visit", "Market walk");
+
+// --- Bonus: some / every / sort demos (not part of today's core build) ---
+
+const day2Activities = kyotoTrip.days[1].activities;
+
+console.log(day2Activities.some((a) => a.time === "TBD"));
+console.log(day2Activities.every((a) => a.time !== "TBD"));
+
+const sortedByDesc = [...day2Activities].sort((a, b) => a.desc.localeCompare(b.desc));
+console.log(sortedByDesc);
